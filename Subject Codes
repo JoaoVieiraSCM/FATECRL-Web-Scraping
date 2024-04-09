@@ -1,0 +1,21 @@
+var ciclos = document.querySelectorAll('.tab-grid-content');
+var todoArray = [];
+
+ciclos.forEach((ciclo)=>{
+    let uls = ciclo.querySelectorAll(".grids-box");
+    let codigos = [];
+    uls.forEach((ul)=>{
+        let divs = ul.querySelectorAll(".tab-grid-content-header");
+        divs.forEach((div)=>{
+            codigos.push(tiraStrong(div.innerHTML));
+        });
+    });
+    todoArray.push(codigos);
+});
+
+function tiraStrong(texto){
+    var partes = texto.split(/<\/?strong/);
+    return partes[2].substr(4); //function substr subtrai apartir do número desejado;
+}
+
+console.table(todoArray);
